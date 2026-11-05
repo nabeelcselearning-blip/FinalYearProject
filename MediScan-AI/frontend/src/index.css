@@ -1,0 +1,314 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base Background & Surface */
+    --background: 45 12% 96%; /* Warm Off-White Cream #F7F6F3 */
+    --foreground: 221 39% 11%; /* Primary Text Deep Slate #111827 */
+
+    --surface-1: 0 0% 100%; /* Pure White Card Surface #FFFFFF */
+    --surface-2: 40 10% 93%;
+    --surface-3: 40 10% 88%;
+
+    --card: 0 0% 100%; /* White Card #FFFFFF */
+    --card-foreground: 221 39% 11%;
+    --card-hover: 45 12% 98%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 39% 11%;
+
+    /* Specific Accent Palette */
+    --primary: 199 89% 48%; /* Primary Accent #0EA5E9 */
+    --primary-hover: 198 93% 60%; /* Hover Accent #38BDF8 */
+    --primary-active: 199 89% 38%; /* Active Accent #0284C7 */
+    --primary-light: 204 94% 94%; /* Light Accent #E0F2FE */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 10% 93%;
+    --secondary-foreground: 221 39% 11%;
+
+    --muted: 40 10% 93%;
+    --muted-foreground: 218 11% 46%; /* Secondary Text Slate Gray #6B7280 */
+
+    --accent: 204 94% 94%; /* Light Accent #E0F2FE */
+    --accent-foreground: 199 89% 38%;
+
+    --border: 220 13% 91%; /* Subtle Border #E5E7EB */
+    --input: 220 13% 91%;
+    --ring: 199 89% 48%;
+
+    --destructive: 4 48% 55%; /* Danger Muted Crimson #C45C54 */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Unchanged Health Status Colors */
+    --healthy: 91 25% 49%; /* Success Warm Olive Green #7C9A5E */
+    --healthy-bg: 91 30% 95%;
+    --healthy-border: 91 25% 82%;
+
+    --warning: 33 54% 51%; /* Warning Warm Amber Gold #C98A3D */
+    --warning-bg: 33 50% 95%;
+    --warning-border: 33 50% 82%;
+
+    --critical: 4 48% 55%; /* Danger Muted Crimson #C45C54 */
+    --critical-bg: 4 45% 95%;
+    --critical-border: 4 45% 82%;
+  }
+
+  .dark {
+    /* Dark Mode Accent Palette */
+    --background: 28 15% 7%; /* Dark Charcoal #141210 */
+    --foreground: 40 15% 95%; /* Off-White Text #F5F3F0 */
+
+    --surface-1: 28 12% 11%;
+    --surface-2: 28 10% 16%;
+    --surface-3: 28 10% 22%;
+
+    --card: 28 12% 11%;
+    --card-foreground: 40 15% 95%;
+    --card-hover: 28 12% 14%;
+
+    --popover: 28 12% 11%;
+    --popover-foreground: 40 15% 95%;
+
+    --primary: 198 93% 60%; /* Hover Accent #38BDF8 */
+    --primary-hover: 199 89% 48%;
+    --primary-active: 199 89% 38%;
+    --primary-foreground: 221 39% 11%;
+
+    --secondary: 28 10% 16%;
+    --secondary-foreground: 40 15% 95%;
+
+    --muted: 28 10% 16%;
+    --muted-foreground: 30 8% 62%;
+
+    --accent: 28 10% 16%;
+    --accent-foreground: 40 15% 95%;
+
+    --border: 28 10% 20%;
+    --input: 28 10% 20%;
+    --ring: 198 93% 60%;
+
+    --destructive: 4 55% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Unchanged Dark Status Tokens */
+    --healthy: 91 30% 55%;
+    --healthy-bg: 91 30% 12%;
+    --healthy-border: 91 30% 22%;
+
+    --warning: 33 54% 51%;
+    --warning-bg: 33 40% 12%;
+    --warning-border: 33 40% 22%;
+
+    --critical: 4 48% 55%;
+    --critical-bg: 4 40% 12%;
+    --critical-border: 4 40% 22%;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  html, body {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.011em;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Completely Hide Scrollbars Globally */
+::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+  background: transparent;
+}
+
+/* Clinical Enterprise Cards */
+.card-soft {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 200ms ease;
+}
+
+.card-soft:hover {
+  background-color: hsl(var(--card-hover));
+  border-color: hsl(var(--border));
+}
+
+/* Shimmer Loading Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--surface-2)) 37%,
+    hsl(var(--muted)) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite ease-in-out;
+}
+
+/* Hide scrollbars class */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism Utilities on Scroll */
+.glass-scroll-active {
+  background-color: rgba(255, 255, 255, 0.52) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-color: rgba(14, 165, 233, 0.3) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(14, 165, 233, 0.08) !important;
+}
+
+.dark .glass-scroll-active {
+  background-color: rgba(20, 18, 16, 0.52) !important;
+  backdrop-filter: blur(28px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 4px 10px -2px rgba(56, 189, 248, 0.2) !important;
+}
+
+/* Logo container */
+.logo-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Large Logo Continuous High-Tech Laser Scan Animation */
+.large-logo-wrapper {
+  position: relative !important;
+  overflow: hidden !important;
+  border-radius: 28px !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Clean Scan Overlay across logo artwork */
+.large-logo-wrapper .scan-bar-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  z-index: 50 !important;
+  border-radius: 28px !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Laser Scan Bar */
+.large-logo-wrapper .scan-bar {
+  position: absolute !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 4px !important;
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0) 0%,
+    rgba(56, 189, 248, 0.95) 15%,
+    #ffffff 50%,
+    rgba(56, 189, 248, 0.95) 85%,
+    rgba(56, 189, 248, 0) 100%
+  ) !important;
+  box-shadow: 
+    0 0 6px 2px #ffffff,
+    0 0 14px 4px #00f2fe,
+    0 0 24px 6px #0284c7,
+    0 -14px 22px 8px rgba(6, 182, 212, 0.5) !important;
+  animation: logo-laser-scan-always 2.2s linear infinite !important;
+  pointer-events: none !important;
+}
+
+/* Laser Flare Edge Dots */
+.large-logo-wrapper .scan-bar::before,
+.large-logo-wrapper .scan-bar::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 10px 4px #00f2fe, 0 0 20px 8px #0284c7 !important;
+}
+
+.large-logo-wrapper .scan-bar::before {
+  left: 1.5% !important;
+}
+
+.large-logo-wrapper .scan-bar::after {
+  right: 1.5% !important;
+}
+
+@keyframes logo-laser-scan-always {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 4px);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+

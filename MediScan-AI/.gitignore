@@ -1,0 +1,46 @@
+# Dependencies
+node_modules/
+jspm_packages/
+web_modules/
+
+# Python Virtual Environment & Bytecode
+venv/
+.venv/
+env/
+.env/
+ENV/
+__pycache__/
+*.pyc
+
+# Environment files (sensitive credentials)
+.env
+.env.*
+*.env
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploads directory contents
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Production builds
+dist/
+build/
+out/
+.next/
+
+# IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
+Thumbs.db
